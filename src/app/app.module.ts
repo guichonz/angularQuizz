@@ -11,6 +11,7 @@ import { QuizModule } from './quiz/quiz.module';
 import { RouterModule, Routes } from '@angular/router';
 import { QuizListComponent } from './quiz/quiz-list/quiz-list.component';
 import { LoginComponent } from './common/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -29,7 +30,7 @@ const routes: Routes = [
     TodoListComponent,
     LoginComponent
   ],
-  imports: [ BrowserModule, QuizModule, RouterModule.forRoot(routes) ],
+  imports: [ BrowserModule, QuizModule, RouterModule.forRoot(routes), HttpClientModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

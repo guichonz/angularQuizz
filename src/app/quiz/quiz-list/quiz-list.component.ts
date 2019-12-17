@@ -14,7 +14,7 @@ export class QuizListComponent implements OnInit {
   constructor(private quizservice: QuizService) { }
 
   ngOnInit() {
-    this.quizList = this.quizservice.loadQuizzes();
+    this.quizservice.loadQuizzes().subscribe(data => this.quizList = data);
   }
 
   public addQuiz() {
@@ -24,10 +24,5 @@ export class QuizListComponent implements OnInit {
   public deleteQuiz() {
     this.quizList.pop();
   }
-
-
-
-
-
 
 }

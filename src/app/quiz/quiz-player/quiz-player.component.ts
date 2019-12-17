@@ -27,13 +27,15 @@ export class QuizPlayerComponent implements OnInit {
   ngOnInit() {
      // Récupère dans l'URL l'id du quizz à afficher.
     const quizId = +this.route.snapshot.paramMap.get('quizId');
-    this.currentQuiz = this.quizService.loadQuiz(quizId);
+    this.quizService.loadQuiz(quizId).subscribe(data => {
+      this.currentQuiz = data;
 
     // définit le Quizz en cours dansle QuizState Manager
-    this.qsm.setQuiz(this.currentQuiz);
+      this.qsm.setQuiz(this.currentQuiz);
 
     // Initialise la liste des réponses
-    this.currentAnswers = this.qsm.getAllAnswers();
+      this.currentAnswers = this.qsm.getAllAnswers();
+    })
   }
 
   refreshButton() {

@@ -24,6 +24,9 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule, RouterModule.forChild(routes)],
+  providers: [
+    {provide: 'BACKEND_URL', useValue:'http://localhost:3004' },
+  ],
   exports: [
     // pour rendre le QuizPlayer affichable EN DEHRS de son module
     CommonModule

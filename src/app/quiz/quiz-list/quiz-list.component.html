@@ -1,18 +1,26 @@
-<h1>Liste des quizzes ({{ quizList.length }})</h1>
+<ng-template #loading>
+  <div class="Alert alert-info" role="alert">
+    <h3>Chargement en cours</h3>
+  </div>
+</ng-template>
 
-<p>
-  <button class="btn btn-default" (click)="addQuiz()">Ajouter</button>
-  <button class="btn btn-default" (click)="deleteQuiz()">Supprimer</button>
-</p>
+<ng-container *ngIf="quizList; else loading">
+  <h1>Liste des quizzes ({{ quizList.length }})</h1>
 
-<div class="alert alert-info" [hidden]="quizList.length !== 0">
-  <h3>Aucun quiz à afficher.</h3>
-</div>
+  <p>
+    <button class="btn btn-default" (click)="addQuiz()">Ajouter</button>
+    <button class="btn btn-default" (click)="deleteQuiz()">Supprimer</button>
+  </p>
 
-<div class="row">
-
-  <div class="col-sm-6" *ngFor="let currentQuiz of quizList">
-    <app-quiz-item [quiz]="currentQuiz"></app-quiz-item>
+  <div class="alert alert-info" [hidden]="quizList.length !== 0">
+    <h3>Aucun quiz à afficher.</h3>
   </div>
 
-</div>
+  <div class="row">
+
+    <div class="col-sm-6" *ngFor="let currentQuiz of quizList">
+      <app-quiz-item [quiz]="currentQuiz"></app-quiz-item>
+    </div>
+
+  </div>
+  </ng-container>
