@@ -12,7 +12,10 @@ import { ReplaySubject } from 'rxjs';
 
 import { User } from '../models/user';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class AuthService {
   private userObs = new ReplaySubject<User>(1);
   private isLoggedInObs = new ReplaySubject<boolean>(1);

@@ -12,12 +12,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { QuizListComponent } from './quiz/quiz-list/quiz-list.component';
 import { LoginComponent } from './common/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [ AuthGuard ] }
   ];
 
 @NgModule({

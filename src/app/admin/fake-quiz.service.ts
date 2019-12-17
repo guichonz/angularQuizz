@@ -11,7 +11,7 @@ import { QuizSubmission } from '../models/quiz-submission';
 export class FakeQuizService {
 
   constructor(private http: HttpClient,
-              @Inject('JSON_SERVER_URL') private baseUrl: string) { }
+              @Inject('BACKEND_URL') private baseUrl: string) { }
 
   /**
    * ===========================
